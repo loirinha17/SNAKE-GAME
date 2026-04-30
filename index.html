@@ -177,6 +177,7 @@
 
                 <button onclick="iniciarJogo()">Iniciar Jogo</button>
                 <button onclick="pausarJogo()">Pausar / Continuar</button>
+
             </div>
 
             <div class="teclas">
@@ -242,6 +243,16 @@
                         { x: 8,  y: 10},
     
                     ];
+
+                    direcao = 'direita';
+                    proximaDireçao = 'direita';
+                    pontos = 0;
+                    jogoAtivo = true;
+                    jogoPausado = false;
+
+
+                    document.getElementById('pontos').textContent = pontos;
+                    
                 }
 
 
