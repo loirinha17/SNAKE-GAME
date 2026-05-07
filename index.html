@@ -254,6 +254,16 @@
                     document.getElementById('pontos').textContent = pontos;
 
                     gerarComida();
+                    
+                    //executa a função atualizarJogo a cada 100 milisegundos 
+                    intervaloJogo = setInterval(atualizarjogo, 100);
+               }
+
+               //=======================================
+               // FUNÇÃO PRINCIPAL DO JOGO ( LOOP )
+               //=======================================
+               function atualizarjogo(){
+                console.log('atualizou!!!');
                }
 
                //=============================
