@@ -229,7 +229,7 @@
                 //=======================================
                 // Carregar recorde do Navegador
                 //=======================================
-                recorde = localStorage.getItem('recordeCobrinha') || 3232;
+                recorde = localStorage.getItem('recordeCobrinha') || 0;
                 document.getElementById('recorde').textContent = recorde;
 
                 //=======================================
@@ -293,7 +293,7 @@
                    // PASSO 2
                    // Desenhar a grade (linhas de referência)
                    ctx.strokeStyle = '#000000';
-                   ctx.lineWhidth = 0.5;
+                   ctx.lineWidth = 0.5;
 
                    for(let i = 0; i <= quantidadeQuadrado; i++){
                       //Linha vetical
