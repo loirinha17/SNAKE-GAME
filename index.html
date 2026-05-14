@@ -296,7 +296,11 @@
                    ctx.lineWhidth = 0.5;
 
                    for(let i = 0; i <= quantidadeQuadrado; i++){
-                       console.log('Quadrado'+i);
+                      //Linha vetical
+                      ctx.beginPath();
+                      ctx.moveTo(i * tamanhoQuadrado, 0);
+                      ctx.lineTo(i * tamanhoQuadrado, canvas.height);
+                      ctx.stroke();
                    }
 
 
