@@ -287,7 +287,7 @@
                function desenhar(){
                    // PASSO 1
                    // Limpar o fundo do Canvas
-                   ctx.fillStyle = '#f0f0f0';
+                   ctx.fillStyle = '#008000';
                    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                    // PASSO 2
@@ -301,6 +301,13 @@
                       ctx.moveTo(i * tamanhoQuadrado, 0);
                       ctx.lineTo(i * tamanhoQuadrado, canvas.height);
                       ctx.stroke();
+
+                      //Linha Horizontal
+                      ctx.beginPath();
+                      ctx.moveTo(0, i * tamanhoQuadrado);
+                      ctx.lineTo(canvas.width, i * tamanhoQuadrado);
+                      ctx.stroke();
+
                    }
 
 
