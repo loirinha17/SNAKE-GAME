@@ -295,7 +295,7 @@
                    ctx.strokeStyle = '#006400';
                    ctx.lineWidth = 0.5;
 
-                   for(let i = 0; i <= quantidadeQuadrado; i++){
+                   for(let i = 0; i <= quantidadeQuadrado; i++){                 
                       //Linha vetical
                       ctx.beginPath();
                       ctx.moveTo(i * tamanhoQuadrado, 0);
@@ -310,8 +310,22 @@
 
                    }
 
+                   //----- PASSO 3: Desenhar a cobra ------
+                   //forEach: outra forma de percorrer um array
+                   //"Para cada pedaço da cobra, faça..."
+                   cobra.forEach( (pedaco, indice) => {
+                            
+                            ctx.fillStyle = '#7FFF00';
 
-                   
+                            ctx.fillRect(
+                                pedaco.x * tamanhoQuadrado +1,
+                                pedaco.y * tamanhoQuadrado +1,
+                                tamanhoQuadrado -2,
+                                tamanhoQuadrado -2
+                            );
+                            
+                             
+                   });           
 
 
                    ctx.fill(); 
