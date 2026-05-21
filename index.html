@@ -329,6 +329,14 @@
                                 tamanhoQuadrado -2
                             );
                             
+                            // Brilho (efeito de luz) - pequeno retangulo branco semi-transparente
+                            ctx.fillStyle = 'rgba(189, 45, 108, 0.3)';
+                            ctx.fillRect(
+                                pedaco.x * tamanhoQuadrado +2,
+                                pedaco.y * tamanhoQuadrado +2,
+                                tamanhoQuadrado / 2,
+                                tamanhoQuadrado / 2
+                            );
                              
                    });           
 
