@@ -1,80 +1,78 @@
 <!DOCTYPE html>
 
-<html lange="pt-br">
+<html lang="pt-br">
     <head>
-       <meta charset="UTF-8">
-         <!--
-              <meta charset> Define o conjunto de caracteres (enconding) 
-              da pagina. UTF-8 garante que acertos e caracteres especiais
-               apareçam corretamente.
-         -->
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-         <!--
-         <meta viewport>:  esta tag é importante para sites de devem funcionar
-         em dispositivos móveis (celular). width-device  -> garante que a 
-         largura da página vai ser adaptar á largura do dispositivo.
-         initial-scale=1 -> não aplica zoom automático ao abrir a página.
-         Sem ela o celular vai tentar mostrar a página como se fosse no computador
-         -->
+        <meta charset="UTF-8">
+        <!--
+             <meta charset> Define o conjunto de caracteres (enconding) 
+             da página. UTF-8 garante que acentos e caracteres especiais
+             apareçam corretamente.
+        -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!--
+        <meta viewport>:  esta tag é imortante para sites que devem funcionar
+        em dispositivos móveis (celular). width-device -> garate que a
+        largura da página vai ser adaptar à largura do dispositivo.
+        initial-scale=1 -> não aplica zoom automático ao abrir a página. 
+        Sem ela o celular vai tentar mostrar a página como se fosse um computador
+        -->
         <title>Jogo da Cobrinha</title>
 
         <!--
-        Estilos e CSS vão ficar abaixo desta linha - Próxima aula
+        Estilos e CSS vão ficar abaixo desta linha - Próxima Aual
         -->
 
         <style>
 
-            .container{
-                text-align: center;
-                background-color: rgba(3, 119, 3, 0.842);
-                padding: 30px;
-                border-radius: 20px;
-                box-shadow: 0px 10px 30px rgb(3, 158, 24);
+            .container {
+              text-align: center;  
+              background-color: white;
+              padding: 30px;
+              border-radius: 20px;
+              box-shadow: 0px 10px 30px black;
             }
- 
-            .info{
+
+            .info {
                 font-size: 1em;
             }
 
-            .pontuacao{
-               font-weight: bold;
-               color:rgb(0, 0, 0);
+            .pontuacao {
+                font-weight: bold;
+                color: #28a745;
             }
 
             .recorde {
                 font-weight: bold;
-                color: #a72839; 
-                }
+                color: #a72839;  
+            }
 
             #canvas{
-                border: 3px solid #000000;
-                border-radius: 10px;
-                background-color: rgb(129, 247, 145);
+                border: 3px solid #333;
+                border-radius:  10px;
+                background-color: #F0F0F0;
                 display: block;
 
                 margin: 20px auto;
                 box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-
             }
 
             .controles {
                 margin-top: 20px;
             }
 
-            button{
+            button {
+                
                 font-size: 16px;
                 cursor: pointer;
-                background-color:rgb(59, 185, 0);
-                
+                background-color: #28A745;
+
                 padding: 12px 25px;
                 color: white;
                 border: none;
                 border-radius: 8px;
                 margin: 5px;
                 transition: all 0.3s ease;
-
-
             }
 
             .teclas{
@@ -83,17 +81,16 @@
                 gap: 5px;
                 justify-content: center;
                 margin: 15px auto;
-
             }
 
             .tecla{
                 width: 50px;
                 height: 50px;
-                background-color: darkgreen;
-                color: #000000;
+                background-color: #667eea;
+                color: #F0F0F0;
                 border: none;
                 cursor: pointer;
-                border-radius: 5px;
+                border-radius: 45px;
                 font-size: 20px;
                 display: flex;
                 align-items: center;
@@ -101,80 +98,73 @@
                 font-weight: bold;
             }
 
-            .tecla.active{
-                background-color: rgb(0, 37, 0);
-                
-            }
- 
-
-             .tecla.vazio{ 
-                  background-color: transparent;
-                   cursor: default;
-
+            .tecla:active{
+                background-color: #a72839;
             }
 
-            .instrucoes{
-                margin-top:  20px;
+            .tecla.vazio{
+                background-color: transparent;
+                cursor: default;
+            }
+
+            .instrucoes {
+                margin-top: 20px;
                 padding: 15px;
-                background-color: rgb(39, 170, 45);
+                background-color: #e9ecef;
                 border-radius: 10px;
                 font-size: 14px;
-                color: #000;
-
+                color: #555;
             }
 
-            .instrucoes h3{
+            .instrucoes h3 {
                 margin-bottom: 10px;
                 color: #333;
             }
 
-            /*
+            /*   
             MEDIA QUERY - adaptação para celular
-            É como definir renders diferentes para exibição em cinema (4K) vs
+            É como definir renders diferentes para exibição em cinena (4K) vs 
             Celular na vertical
             */
-            @media (max-width:600px){
-                h1{
+            @media (max-width: 600px){
+                h1 {
                     font-size: 1.8em;
                 }
-                .info{
+                .info {
                     font-size: 1em;
                 }
             }
 
         </style>
-
     </head>
-    <body> 
+    <body>
 
-        <div   class="container">
-            <h1> &#128013; Jogo da Cobrinha 🍎​  </h1>
+        <div  class="container">
+            <h1>&#128013;  Jogo da Cobrinha &#128517;</h1>
 
-            <div class="info"> 
+            <div class="info">
 
-                <div class="pontuacao"> 
+                <div class="pontuacao">
                     Pontuação: <span id="pontos"> </span>
                 </div>
 
-                <div class="recorde"> 
+                <div class="recorde">
                     Recorde: <span id="recorde"> </span>
                 </div>
-            </div>
 
+            </div>
             <canvas id="canvas" width="400" height="400">
                 <!--
                 
-                <canvas>: é um elemento especial para desenho 2D ou 3D. Por si só, 
-                é apenas um retângulo vazio. O JavasScript vai usar o "contexto 2D"
-                para desenhar a cobra, e comida, etc   
-
-
+                <canvas>: é um elemento especial para desenho 2D ou 3D. Por si só,
+                é apenas um retângulo vazio. O JavaScript vai usar o "contexto 2D" 
+                para desenhar a cobra, e comida, etc
                 -->
 
-             </canvas>
-  
-            <div class="controles">
+            </canvas>
 
+            <div  class="controles">
+                
                 <button onclick="iniciarJogo()">Iniciar Jogo</button>
                 <button onclick="pausarJogo()">Pausar / Continuar</button>
 
@@ -183,224 +173,221 @@
             <div class="teclas">
 
                 <div class="tecla vazio"></div>
-                <div class="tecla" onclick="mudarDirecao('cima')">&#9650;</div>
+                <div class="tecla" onclick="mudarDirecao('cima')" >&#9650;</div>
                 <div class="tecla vazio"></div>
-                <div class="tecla" onclick="mudarDirecao('esquerda')">&#9668;</div>
-                <div class="tecla" onclick="mudarDirecao('baixo')">&#9660;</div>
-                <div class="tecla" onclick="mudarDirecao('direita')">&#9658;</div>
+                <div class="tecla" onclick="mudarDirecao('esquerda')" >&#9668;</div>
+                <div class="tecla" onclick="mudarDirecao('baixo')" >&#9660;</div>
+                <div class="tecla" onclick="mudarDirecao('direita')" >&#9658;</div>
 
             </div>
 
             <div class="instrucoes">
                 <h3>Como Jogar:</h3>
-                <p>Use as setas do teclado ou os botões acima para controlar a cobra</p>
+                <p>Use as setas de teclado ou os botões acima para controlar a cobra</p>
                 <p>Coma as maçãs vermelhas &#127822; para crescer e ganhar pontos</p>
-                <p>Não bata nas paredes nem no própio corpo</p>
+                <p>Não bata nas paredes nem no próprio corpo</p>
             </div>
-          
-        </div> 
-        
-                
-            <script>
 
-                //=======================================
-                // CONFIGURAÇÕES DO JOGO
-                //=======================================
-                const canvas = document.getElementById('canvas');
-                const ctx = canvas.getContext('2d');
-                //tamanho de cada quadrado no jogo
-                const tamanhoQuadrado = 20;
-                //quantos quadrados cabem ma largura e altura do espaço 2d
-                const quantidadeQuadrado = canvas.width / tamanhoQuadrado;
+        </div>
 
-                //=======================================
-                // Variáveis do Jogo 
-                //=======================================
-                let cobra;                // Arrey (vetor) que guarda as posições da cobra
-                let direcao;              // Direção atual da cobra
-                let proximaDireçao;       // Próxima direção (evita viradas impossíveis) 
-                let comida;               // Posição da comida
-                let pontos;               // Pontuação atual
-                let recorde;              // Melhor pontuação
-                let jogoAtivo;            // Se o jogo está rodando
-                let jogoPausado;          // Se o jogo está pausado
-                let intervaloJogo;        // Controla a velocidade do jogo
+        <script>
 
-                //=======================================
-                // Carregar recorde do Navegador
-                //=======================================
-                recorde = localStorage.getItem('recordeCobrinha') || 0;
-                document.getElementById('recorde').textContent = recorde;
+            //=============================
+            // CONFIGURAÇÕES DO JOGO
+            //=============================
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            // tamanho de cada quadrado no jogo
+            const tamanhoQuadrado = 20;
+            // quantos quadrados cabem na largura e altura do espaço 2D
+            const quantidadeQuadrados = canvas.width / tamanhoQuadrado;
 
-                //=======================================
-                // Função para iniciar o Jogo
-                //=======================================
-                
-                function iniciarJogo(){
-                    cobra = [
-                        { x: 10, y: 10},
-                        { x: 9,  y: 10},
-                        { x: 8,  y: 10},
-    
-                    ];
+            //============================
+            // Variáveis do Jogo
+            //============================
+            let cobra;              // Array (vetor) que guarda as posições da cobra
+            let direcao;            // Direção atual da cobra
+            let proximaDirecao;     // Próxima direção (evita viradas impossíveis)
+            let comida;             // Posição da comida
+            let pontos;             // Pontuação atual
+            let recorde;            // Melhor pontuação
+            let jogoAtivo;          // Se o jogo está rodando
+            let jogoPausado;        // Se o jogo está pausado
+            let intervaloJogo;      // Controla a velocidade do jogo
 
-                    direcao = 'direita';
-                    proximaDireçao = 'direita';
-                    pontos = 0;
-                    jogoAtivo = true;
-                    jogoPausado = false;
+            //==============================
+            // Carregar recorde do Navegador
+            //==============================
+            recorde = localStorage.getItem('recordeCobrinha') || 0;
+            document.getElementById('recorde').textContent = recorde;
+
+            //==============================
+            // Função para inicar o Jogo
+            //==============================
+            function iniciarJogo(){
+                cobra = [
+                    { x: 10, y: 10},
+                    { x: 9,  y: 10},
+                    { x: 8,  y: 10},
+                ];
+
+                direcao = 'direita';
+                proximaDirecao = 'direita';
+                pontos = 0;
+                jogoAtivo = true;
+                jogoPausado = false;
+
+                document.getElementById('pontos').textContent = pontos;
+
+                gerarComida();
+
+                //Limpar o intervalo anterior se existir
+                if(intervaloJogo){
+                    clearInterval(intervaloJogo);
+                }
+
+                //executa a função atualizarJogo a cada 100 milisegundos
+                intervaloJogo = setInterval(atualizarJogo, 100);
+            }
 
 
-                    document.getElementById('pontos').textContent = pontos;
-
-                    gerarComida();
-
-                    //Limpar o intervalo anterior se existir
-                    if(intervaloJogo){
-                        clearInterval(intervaloJogo);
-                    }
-                    
-                    //executa a função atualizarJogo a cada 100 milisegundos 
-                    intervaloJogo = setInterval(atualizarjogo, 100);
+            //===================================
+            // FUNÇÃO PRINCIPAL DO JOGO ( LOOP )
+            //===================================
+            function atualizarJogo(){
+               if(!jogoAtivo || jogoPausado){
+                    return;
                }
 
-               //=======================================
-               // FUNÇÃO PRINCIPAL DO JOGO ( LOOP )
-               //=======================================
-               function atualizarjogo(){
-                    if(!jogoAtivo || jogoPausado){
-                        return;
-                    }
-
-                    direcao = proximaDireçao;
-
-                    let cabeca = {...cobra[0]}
-
-                    //Mover a cabeça na direção atual
+               direcao = proximaDirecao;
                 
+               let cabeca = {...cobra[0]} 
 
-                    desenhar();
-               }
-                //==============================
-                //FUNÇÃO PARA DESENHAR OS ELEMENTOS VISUAIS DO JOGO
-                //==============================
-               function desenhar(){
-                   // PASSO 1
-                   // Limpar o fundo do Canvas
-                   ctx.fillStyle = '#7FFF00';
-                   ctx.fillRect(0, 0, canvas.width, canvas.height);
+               //Mover a cabeça na direção atual
+               
+               desenhar();                
+            }
 
-                   // PASSO 2
-                   // Desenhar a grade (linhas de referência)
-                   ctx.strokeStyle = '#006400';
-                   ctx.lineWidth = 0.5;
+            //=============================
+            //FUNÇÃO PARA DESENHAR OS ELEMENTOS VISUAIS DO JOGO
+            //=============================
+            function desenhar(){
+                // PASSO 1
+                //Limpar o fundo do Canvas
+                ctx.fillStyle = '#f0f0f0';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                   for(let i = 0; i <= quantidadeQuadrado; i++){                 
-                      //Linha vetical
-                      ctx.beginPath();
-                      ctx.moveTo(i * tamanhoQuadrado, 0);
-                      ctx.lineTo(i * tamanhoQuadrado, canvas.height);
-                      ctx.stroke();
+                // PASSO 2
+                // Desenhar a grade (linhas de referência)
+                ctx.strokeStyle = '#e0e0e0';
+                ctx.lineWidth = 0.5;
 
-                      //Linha Horizontal
-                      ctx.beginPath();
-                      ctx.moveTo(0, i * tamanhoQuadrado);
-                      ctx.lineTo(canvas.width, i * tamanhoQuadrado);
-                      ctx.stroke();
+                for(let i = 0; i <= quantidadeQuadrados; i++){
+                        //Linha vertical
+                        ctx.beginPath();
+                        ctx.moveTo(i * tamanhoQuadrado, 0);
+                        ctx.lineTo(i * tamanhoQuadrado, canvas.height);
+                        ctx.stroke();
 
-                   }
+                        //Linha horizontal
+                        ctx.beginPath();
+                        ctx.moveTo(0, i * tamanhoQuadrado);
+                        ctx.lineTo(canvas.width, i * tamanhoQuadrado);
+                        ctx.stroke();
+                } 
 
-                   //----- PASSO 3: Desenhar a cobra ------
-                   //forEach: outra forma de percorrer um array
-                   //"Para cada pedaço da cobra, faça..."
-                   cobra.forEach( (pedaco, indice) => {
+                // ----- PASSO 3: Desenhar a cobra ---------------------
+                // forEach: outra forma de percorrer um array
+                // "Para cada pedaço da cobra, faça..."
+                cobra.forEach( (pedaco, indice) => {
 
-                    let cor_do_pedaco = '#228B22'
-                    if(indice ==0){
-                        cor_do_pedaco = '#006400'
+                    let cor_do_pedaco = '#4CAF50';
+                    if(indice === 0){
+                        cor_do_pedaco = '#2d5016';
                     }
-                            
-                            ctx.fillStyle = cor_do_pedaco;
+                    ctx.fillStyle = cor_do_pedaco;
 
-                            ctx.fillRect(
-                                pedaco.x * tamanhoQuadrado +1,
-                                pedaco.y * tamanhoQuadrado +1,
-                                tamanhoQuadrado -2,
-                                tamanhoQuadrado -2
-                            );
-                            
-                            // Brilho (efeito de luz) - pequeno retangulo branco semi-transparente
-                            ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-                            ctx.fillRect(
-                                pedaco.x * tamanhoQuadrado +2,
-                                pedaco.y * tamanhoQuadrado +2,
-                                tamanhoQuadrado / 2,
-                                tamanhoQuadrado / 2
-                            );
-                             
-                   });           
-
-                    // PASSO 4 - Desenhar a comida (cículo vermelho)
-                    ctx.fillStyle = '#dc3545';
-                    ctx.beginPath();
-                    ctx.arc(
-                                comida.x * tamanhoQuadrado + tamanhoQuadrado /2,
-                                comida.y * tamanhoQuadrado + tamanhoQuadrado /2,
-                                tamanhoQuadrado / 2 - 2,
-                                0,
-                                Math.PI * 2
-
+                    ctx.fillRect(
+                        pedaco.x * tamanhoQuadrado + 1,
+                        pedaco.y * tamanhoQuadrado + 1,
+                        tamanhoQuadrado -2,
+                        tamanhoQuadrado -2
                     );
 
-                   ctx.fill(); 
-               }
-               
+                    //Brilho (efeito de luz) - pequeno retangulo branco semi-transparente
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+                    ctx.fillRect(
+                        pedaco.x * tamanhoQuadrado + 2,
+                        pedaco.y * tamanhoQuadrado + 2,
+                        tamanhoQuadrado / 2,
+                        tamanhoQuadrado / 2
+                    );
+                });
 
-               //=============================
-               //====FUNÇÃO PARA GERAR COMIDA
-               //=============================
-               function gerarComida(){
-                   let posicaoValida = false;
 
-                    while(!posicaoValida){
-                      comida = {
-                          x : Math.floor(Math.random() * quantidadeQuadrado ),
-                          y : Math.floor(Math.random() * quantidadeQuadrado ),                        
-                      }
+               //----  PASSO 4 - Desenhar a comida (círculo vermelho)
+               ctx.fillStyle = '#dc3545';
+               ctx.beginPath();
+               ctx.arc(
+                    comida.x * tamanhoQuadrado + tamanhoQuadrado / 2,
+                    comida.y * tamanhoQuadrado + tamanhoQuadrado / 2,
+                    tamanhoQuadrado / 2 - 2,
+                    0,
+                    Math.PI * 2
+               );
 
-                      //verificar se a comida não esta em cima da cobra
-                      posicaoValida = true; 
-                      
-                      for(let pedaco of cobra){
+                ctx.fill();
+            }
 
-                           if(comida.x === pedaco.x && comida.y === pedaco.y ){
-                               posicaoValida = false;
-                               break; 
+            //=============================
+            //====FUNÇÃO PARA GERAR COMIDA
+            //=============================
+            function gerarComida(){
+                let posicaoValida = false;
 
-                           }
+                while(!posicaoValida){
+                    //gera uma posição aleatória para a comida
+                    comida = {
+                        x : Math.floor(Math.random() * quantidadeQuadrados),
+                        y : Math.floor(Math.random() * quantidadeQuadrados)
+                    }
 
-                      }
-
-                    }    
-
-               }
-
+                    //verificar se a comida não está em cima da cobra
+                    posicaoValida = true;
+                    
+                    for(let pedaco of cobra){
+                        if(comida.x === pedaco.x && comida.y === pedaco.y ){
+                            posicaoValida = false;
+                            break;
+                        }
+                    }
+                }
+            }
 
             function mudarDirecao(novaDirecao){
-                //bem aqui vai aparecer um bug
-                proximaDireçao = novaDirecao;
-                console.log(proximaDireçao);
+              
+                if(novaDirecao === 'cima'    &&  direcao !== 'baixo'){
+                    proximaDirecao = 'cima';
+                }
+
+                if(novaDirecao === 'baixo'    &&  direcao !== 'cima'){
+                    proximaDirecao = 'baixo';
+                }
+
+                if(novaDirecao === 'esquerda'    &&  direcao !== 'direita'){
+                    proximaDirecao = 'esquerda';
+                }
+
+                if(novaDirecao === 'direita'    &&  direcao !== 'esquerda'){
+                    proximaDirecao = 'direita';
+                }
             }
-
-
+            
             function pausarJogo(){
-                 console.log('Pausa no Jogo!!')
+                console.log('Pausa no Jogo!!')
             }
-
-
 
         </script>
 
     </body>
-          
 </html>
