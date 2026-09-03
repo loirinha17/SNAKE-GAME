@@ -27,7 +27,7 @@
 
             .container {
               text-align: center;  
-              background-color: rgb(4, 99, 16);
+              background-color: white;
               padding: 30px;
               border-radius: 20px;
               box-shadow: 0px 10px 30px black;
@@ -50,7 +50,7 @@
             #canvas{
                 border: 3px solid #333;
                 border-radius:  10px;
-                background-color: #32db40;
+                background-color: #F0F0F0;
                 display: block;
 
                 margin: 20px auto;
@@ -86,7 +86,7 @@
             .tecla{
                 width: 50px;
                 height: 50px;
-                background-color: #022912;
+                background-color: #667eea;
                 color: #F0F0F0;
                 border: none;
                 cursor: pointer;
@@ -247,7 +247,7 @@
                 }
 
                 //executa a função atualizarJogo a cada 100 milisegundos
-                intervaloJogo = setInterval(atualizarJogo, 100);
+                intervaloJogo = setInterval(atualizarJogo, 500);
             }
 
 
@@ -266,29 +266,59 @@
                //Mover a cabeça na direção atual
                switch(direcao){
                     case 'cima':
-                      cabeca.y--;
-                      break;
-                
+                        cabeca.y--;
+                        break;
+                    
                     case 'baixo':
-                      cabeca.y++;
-                      break;
+                        cabeca.y++;
+                        break;
 
                     case 'esquerda':
-                      cabeca.x--;
-                      break;
+                        cabeca.x--;
+                        break;
 
                     case 'direita':
-                      cabeca.x++;
-                      break;
+                        cabeca.x++;
+                        break;
                }
 
-               //adiciona uma nova cabeça 
+               // verificar colisão com paredes (esquerda ou direita)
+               if(cabeca.x < 0 || cabeca.x >= quantidadeQuadrados){
+                    fimDeJogo();
+                    return;
+               }
+
+               //verificar colisão com paredes (cima ou abaixo)
+                if(cabeca.y < 0 || cabeca.y >= quantidadeQuadrados){
+                    fimDeJogo();
+                    return;
+               }
+
+               // adiciona nova cabeça
                cobra.unshift(cabeca);
-
-               //remover o ultimo elemento do vetor
+               //remover o último elemento do vetor
                cobra.pop();
-
                desenhar();                
+            }
+            //============================
+            // FIM DE JOGO
+            //============================
+            function fimDeJogo(){
+                jogoAtivo = false;
+                
+                clearInterval(intervaloJogo);
+
+                //Desenhar mensagm de FIM DE JOGO
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 40px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('FIM DE JOGO', canvas.width / 2, canvas.height / 2);
+
+                ctx.font = '20px Arial';
+                ctx.fillText(`Pontuação: ${pontos}`, canvas.width / 2, (canvas.height / 2) + 50);
             }
 
             //=============================
