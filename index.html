@@ -50,7 +50,7 @@
             #canvas{
                 border: 3px solid #333;
                 border-radius:  10px;
-                background-color: #F0F0F0;
+                background-color: #005215;
                 display: block;
 
                 margin: 20px auto;
@@ -68,7 +68,7 @@
                 background-color: #28A745;
 
                 padding: 12px 25px;
-                color: white;
+                color: rgb(21, 199, 66);
                 border: none;
                 border-radius: 8px;
                 margin: 5px;
@@ -87,7 +87,7 @@
                 width: 50px;
                 height: 50px;
                 background-color: #667eea;
-                color: #F0F0F0;
+                color: #205e04;
                 border: none;
                 cursor: pointer;
                 border-radius: 45px;
@@ -110,7 +110,7 @@
             .instrucoes {
                 margin-top: 20px;
                 padding: 15px;
-                background-color: #e9ecef;
+                background-color: #96ff1f;
                 border-radius: 10px;
                 font-size: 14px;
                 color: #555;
@@ -416,7 +416,9 @@
                     }
                 }
             }
-
+            //=====================
+            //===== Mudar direção, cima, baixo, esquerda, direita
+            //=====================
             function mudarDirecao(novaDirecao){
               
                 if(novaDirecao === 'cima'    &&  direcao !== 'baixo'){
@@ -439,6 +441,15 @@
             function pausarJogo(){
                 console.log('Pausa no Jogo!!')
             }
+
+            //===========================
+            //====== CONTROLE DE TECLADO
+            //===========================
+            fuction habilitarTeclasDirecionais(){
+                alert('Teclas habilitadas!!!');
+            }
+
+
 
         </script>
 
