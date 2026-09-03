@@ -446,6 +446,9 @@
             //====== CONTROLE DE TECLADO
             //===========================
             document.addEventListener('keydown', function(event){
+
+               event.preventDefault();
+
                if(event.key === 'ArrowDown'){
                      mudarDirecao('baixo');
                }else if(event.key === 'Arrowup'){
