@@ -203,7 +203,7 @@
             const quantidadeQuadrados = canvas.width / tamanhoQuadrado;
 
             //============================
-            // Variáveis do Jogo
+            // VARIÁVEIS DO JOGO
             //============================
             let cobra;              // Array (vetor) que guarda as posições da cobra
             let direcao;            // Direção atual da cobra
@@ -216,13 +216,13 @@
             let intervaloJogo;      // Controla a velocidade do jogo
 
             //==============================
-            // Carregar recorde do Navegador
+            // CARREGAR RECORD DO NAVEGADOR
             //==============================
             recorde = localStorage.getItem('recordeCobrinha') || 0;
             document.getElementById('recorde').textContent = recorde;
 
             //==============================
-            // Função para inicar o Jogo
+            // FUNÇÃO PARA INICIAR O JOGO 
             //==============================
             function iniciarJogo(){
                 cobra = [
@@ -298,7 +298,11 @@
                cobra.unshift(cabeca);
 
                if(cabeca.x === comida.x && cabeca.y === comida.y){
+                pontos = pontos + 1;
+
+                    atualizarPainelPontos();
                     gerarComida();
+
                }else{
                     cobra.pop();
                }
@@ -307,7 +311,27 @@
                desenhar();                
             }
             
-            
+            //=========================================
+            // ATUALIZA OS VALORES DO PAINEL DE PONTUAÇÃO + RECORD
+            //=========================================
+            function atualizarPainelPontos(){
+                document.getElementById('pontos').textContent = pontos;
+                atualizarRecordePontuacao();
+
+            }
+
+            //=====================================
+            // ATUALIZAR OS VALORES DO RECORDE DE PONTUAÇÃO
+            //=====================================
+
+            function atualizarRecordePontuacao(){
+                if(pontos > recorde){
+                        document.getElementById('recorde').textContent = pontos;
+                        localStorage.setItem('recordeCobrinha', pontos);
+                }
+            }
+
+
             //============================
             // FIM DE JOGO
             //============================
@@ -330,7 +354,7 @@
             }
 
             //=============================
-            //FUNÇÃO PARA DESENHAR OS ELEMENTOS VISUAIS DO JOGO
+            // FUNÇÃO PARA DESENHAR OS ELEMENTOS VISUAIS DO JOGO
             //=============================
             function desenhar(){
                 // PASSO 1
@@ -401,7 +425,7 @@
             }
 
             //=============================
-            //==== GERAR COMIDA
+            // GERAR COMIDA
             //=============================
             function gerarComida(){
                 let posicaoValida = false;
@@ -426,7 +450,7 @@
             }
 
             //============================
-            //=====  MUDA A DIREÇÃO DA COBRA - CIMA, BAIXO, ESQUE, DIREI
+            // MUDA A DIREÇÃO DA COBRA - CIMA, BAIXO, ESQUE, DIREI
             //=============================
             function mudarDirecao(novaDirecao){
               
@@ -449,7 +473,7 @@
             
 
             //============================
-            //==== PAUSAR O JOGO
+            // PAUSAR O JOGO
             //============================
             function pausarJogo(){
                 if(!jogoAtivo){
@@ -475,7 +499,7 @@
             }
 
             //===========================
-            //==== CONTROLE DE TECLADO
+            // CONTROLE DE TECLADO
             //===========================
            document.addEventListener('keydown', function(event){
                
