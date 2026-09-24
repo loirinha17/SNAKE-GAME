@@ -4,17 +4,17 @@
     <head>
         <meta charset="UTF-8">
         <!--
-             <meta charset> Define o conjunto de caracteres (enconding) 
+             <meta charset> Define o conjunto de caracteres (enconding)
              da página. UTF-8 garante que acentos e caracteres especiais
              apareçam corretamente.
         -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
         <!--
         <meta viewport>:  esta tag é imortante para sites que devem funcionar
         em dispositivos móveis (celular). width-device -> garate que a
         largura da página vai ser adaptar à largura do dispositivo.
-        initial-scale=1 -> não aplica zoom automático ao abrir a página. 
+        initial-scale=1 -> não aplica zoom automático ao abrir a página.
         Sem ela o celular vai tentar mostrar a página como se fosse um computador
         -->
         <title>Jogo da Cobrinha</title>
@@ -26,11 +26,11 @@
         <style>
 
             .container {
-              text-align: center;  
-              background-color: #018b2f(0, 37, 8);
+              text-align: center;
+              background-color: rgb(0, 255, 0);
               padding: 30px;
               border-radius: 20px;
-              box-shadow: 0px 10px 30px rgba(43, 248, 2, 0.479);   
+              box-shadow: 0px 10px 30px black;
             }
 
             .info {
@@ -39,22 +39,21 @@
 
             .pontuacao {
                 font-weight: bold;
-                color: #006117;
+                color: #28a745;
             }
 
             .recorde {
                 font-weight: bold;
-                color: #4d006b;  
+                color: #a72839;
             }
 
             #canvas{
-                border: 3px solid #01ac1d;
+                border: 3px solid #333;
                 border-radius:  10px;
-                background-color: #52cc62;
+                background-color: #f1eaea;
                 display: block;
-
                 margin: 20px auto;
-                box-shadow: 0px 5px 15px rgba(0, 97, 5, 0.2);
+                box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
             }
 
             .controles {
@@ -62,13 +61,13 @@
             }
 
             button {
-                
+
                 font-size: 16px;
                 cursor: pointer;
-                background-color: #6c2dd8;
+                background-color: #28A745;
 
                 padding: 12px 25px;
-                color: #9F67FF(125, 255, 93);
+                color: white;
                 border: none;
                 border-radius: 8px;
                 margin: 5px;
@@ -86,8 +85,8 @@
             .tecla{
                 width: 50px;
                 height: 50px;
-                background-color: #33056ef3;
-                color: #a31de0;
+                background-color: linear-gradient (40deg, #836FFF #000080)
+                color: #F0F0F0;
                 border: none;
                 cursor: pointer;
                 border-radius: 45px;
@@ -99,7 +98,7 @@
             }
 
             .tecla:active{
-                background-color: #6c03ce;
+                background-color: #a72839;
             }
 
             .tecla.vazio{
@@ -110,10 +109,10 @@
             .instrucoes {
                 margin-top: 20px;
                 padding: 15px;
-                background-color: #0F3028;
+                background-color: #e9ecef;
                 border-radius: 10px;
                 font-size: 14px;
-                color: #0a0707;
+                color: #555;
             }
 
             .instrucoes h3 {
@@ -121,9 +120,9 @@
                 color: #333;
             }
 
-            /*   
+            /*
             MEDIA QUERY - adaptação para celular
-            É como definir renders diferentes para exibição em cinena (4K) vs 
+            É como definir renders diferentes para exibição em cinena (4K) vs
             Celular na vertical
             */
             @media (max-width: 600px){
@@ -155,16 +154,16 @@
             </div>
             <canvas id="canvas" width="400" height="400">
                 <!--
-                
+
                 <canvas>: é um elemento especial para desenho 2D ou 3D. Por si só,
-                é apenas um retângulo vazio. O JavaScript vai usar o "contexto 2D" 
+                é apenas um retângulo vazio. O JavaScript vai usar o "contexto 2D"
                 para desenhar a cobra, e comida, etc
                 -->
 
             </canvas>
 
             <div  class="controles">
-                
+
                 <button onclick="iniciarJogo()">Iniciar Jogo</button>
                 <button onclick="pausarJogo()">Pausar / Continuar</button>
 
@@ -203,7 +202,7 @@
             const quantidadeQuadrados = canvas.width / tamanhoQuadrado;
 
             //============================
-            // VARIÁVEIS DO JOGO
+            // Variáveis do Jogo
             //============================
             let cobra;              // Array (vetor) que guarda as posições da cobra
             let direcao;            // Direção atual da cobra
@@ -213,18 +212,20 @@
             let recorde;            // Melhor pontuação
             let jogoAtivo;          // Se o jogo está rodando
             let jogoPausado;        // Se o jogo está pausado
-            let intervaloJogo;      // Controla a velocidade do jogo
+            let intervaloJogo;      // Controla o fluxo de execução principal, loop
+            let velocidade;         // Controla Velocidade do Jogo
 
             //==============================
-            // CARREGAR RECORD DO NAVEGADOR
+            // Carregar recorde do Navegador
             //==============================
             recorde = localStorage.getItem('recordeCobrinha') || 0;
             document.getElementById('recorde').textContent = recorde;
 
             //==============================
-            // FUNÇÃO PARA INICIAR O JOGO 
+            // Função para inicar o Jogo
             //==============================
             function iniciarJogo(){
+                velocidade = 400;
                 cobra = [
                     { x: 10, y: 10},
                     { x: 9,  y: 10},
@@ -247,7 +248,7 @@
                 }
 
                 //executa a função atualizarJogo a cada 100 milisegundos
-                intervaloJogo = setInterval(atualizarJogo, 400);
+                intervaloJogo = setInterval(atualizarJogo, velocidade);
             }
 
 
@@ -260,15 +261,15 @@
                }
 
                direcao = proximaDirecao;
-                
-               let cabeca = {...cobra[0]} 
+
+               let cabeca = {...cobra[0]}
 
                //Mover a cabeça na direção atual
                switch(direcao){
                     case 'cima':
                         cabeca.y--;
                         break;
-                    
+
                     case 'baixo':
                         cabeca.y++;
                         break;
@@ -295,50 +296,52 @@
                }
 
                // verifica colisão com o próprio corpo
-               for(let i = 0; i < cobra.length; i ++){
-                let pedacoCorpo = cobra [i];
+               for(let i = 0;  i < cobra.length; i++){
+                    let pedacoCorpo = cobra[i];
 
-                    if(cabeca.x === pedacoCorpo.x && cabeca.y === pedacoCorpo.y){
+                     if(cabeca.x === pedacoCorpo.x && cabeca.y === pedacoCorpo.y){
                         fimDeJogo();
                         return;
                     }
                }
 
-
                // adiciona nova cabeça
                cobra.unshift(cabeca);
-
                if(cabeca.x === comida.x && cabeca.y === comida.y){
-                pontos = pontos + 1;
+                    pontos = pontos + 1;
 
                     atualizarPainelPontos();
                     gerarComida();
-
+                    incrementoVelocidade(); //TODO - Novo
                }else{
-                    cobra.pop();
+                  cobra.pop();
                }
-               
-                
-               desenhar();                
+               desenhar();
             }
-            
-            //=========================================
+
+            function incrementoVelocidade(){
+                if(intervaloJogo){
+                    clearInterval(intervaloJogo);
+                }
+                velocidade = velocidade - 50;
+                intervaloJogo = setInterval(atualizarJogo, velocidade);
+            }
+
+            //============================
             // ATUALIZA OS VALORES DO PAINEL DE PONTUAÇÃO + RECORD
-            //=========================================
+            //============================
             function atualizarPainelPontos(){
                 document.getElementById('pontos').textContent = pontos;
                 atualizarRecordePontuacao();
-
             }
 
-            //=====================================
-            // ATUALIZAR OS VALORES DO RECORDE DE PONTUAÇÃO
-            //=====================================
-
+            //============================
+            // ATUALIZA OS VALORES DO RECORD DE PONTUAÇÃO
+            //============================
             function atualizarRecordePontuacao(){
                 if(pontos > recorde){
-                        document.getElementById('recorde').textContent = pontos;
-                        localStorage.setItem('recordeCobrinha', pontos);
+                    document.getElementById('recorde').textContent = pontos;
+                    localStorage.setItem('recordeCobrinha', pontos);
                 }
             }
 
@@ -348,7 +351,7 @@
             //============================
             function fimDeJogo(){
                 jogoAtivo = false;
-                
+
                 clearInterval(intervaloJogo);
 
                 //Desenhar mensagm de FIM DE JOGO
@@ -365,7 +368,7 @@
             }
 
             //=============================
-            // FUNÇÃO PARA DESENHAR OS ELEMENTOS VISUAIS DO JOGO
+            //FUNÇÃO PARA DESENHAR OS ELEMENTOS VISUAIS DO JOGO
             //=============================
             function desenhar(){
                 // PASSO 1
@@ -390,7 +393,7 @@
                         ctx.moveTo(0, i * tamanhoQuadrado);
                         ctx.lineTo(canvas.width, i * tamanhoQuadrado);
                         ctx.stroke();
-                } 
+                }
 
                 // ----- PASSO 3: Desenhar a cobra ---------------------
                 // forEach: outra forma de percorrer um array
@@ -436,7 +439,7 @@
             }
 
             //=============================
-            // GERAR COMIDA
+            //==== GERAR COMIDA
             //=============================
             function gerarComida(){
                 let posicaoValida = false;
@@ -450,7 +453,7 @@
 
                     //verificar se a comida não está em cima da cobra
                     posicaoValida = true;
-                    
+
                     for(let pedaco of cobra){
                         if(comida.x === pedaco.x && comida.y === pedaco.y ){
                             posicaoValida = false;
@@ -461,10 +464,10 @@
             }
 
             //============================
-            // MUDA A DIREÇÃO DA COBRA - CIMA, BAIXO, ESQUE, DIREI
+            //=====  MUDA A DIREÇÃO DA COBRA - CIMA, BAIXO, ESQUE, DIREI
             //=============================
             function mudarDirecao(novaDirecao){
-              
+
                 if(novaDirecao === 'cima'    &&  direcao !== 'baixo'){
                     proximaDirecao = 'cima';
                 }
@@ -481,10 +484,10 @@
                     proximaDirecao = 'direita';
                 }
             }
-            
+
 
             //============================
-            // PAUSAR O JOGO
+            //==== PAUSAR O JOGO
             //============================
             function pausarJogo(){
                 if(!jogoAtivo){
@@ -502,18 +505,18 @@
                     ctx.fillStyle = 'white';
                     ctx.font = '30px Arial';
                     ctx.textAlign = 'center';
-                    ctx.fillText('PAUSADO!', canvas.width/2, canvas.height/2); 
-                    
+                    ctx.fillText('PAUSADO!', canvas.width/2, canvas.height/2);
+
                 }else{
-                    intervaloJogo = setInterval(atualizarJogo, 400);
+                    intervaloJogo = setInterval(atualizarJogo, velocidade);
                 }
             }
 
             //===========================
-            // CONTROLE DE TECLADO
+            //==== CONTROLE DE TECLADO
             //===========================
            document.addEventListener('keydown', function(event){
-               
+
                 if(event.key === 'ArrowDown'){
                     event.preventDefault();
                     mudarDirecao('baixo');
