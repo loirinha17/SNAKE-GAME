@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogo da Cobrinha</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="voltar" href="../../index.html">&larr; Menu de jogos</a>
+<div class="container">
+  <h1>&#128013; Jogo da Cobrinha</h1>
+
+  <div class="info">
+    <div class="box">Pontos<b id="pontos">0</b></div>
+    <div class="box">N&iacute;vel<b id="nivel">1</b></div>
+    <div class="box">Recorde<b id="recorde">0</b></div>
+  </div>
+
+  <div class="opcoes">
+    <label for="dificuldade">Dificuldade:</label>
+    <select id="dificuldade">
+      <option value="facil">F&aacute;cil (atravessa paredes)</option>
+      <option value="medio" selected>M&eacute;dio</option>
+      <option value="dificil">Dif&iacute;cil (obst&aacute;culos)</option>
+    </select>
+    <button id="btnSom" title="Som" style="padding:6px 10px;margin:0">&#128266;</button>
+  </div>
+
+  <canvas id="canvas" width="400" height="400"></canvas>
+
+  <div>
+    <button id="btnIniciar">Iniciar Jogo</button>
+    <button id="btnPausar">Pausar / Continuar</button>
+  </div>
+
+  <div class="teclas">
+    <div class="tecla vazio"></div>
+    <button class="tecla" data-dir="cima">&#9650;</button>
+    <div class="tecla vazio"></div>
+    <button class="tecla" data-dir="esquerda">&#9668;</button>
+    <button class="tecla" data-dir="baixo">&#9660;</button>
+    <button class="tecla" data-dir="direita">&#9658;</button>
+  </div>
+
+  <div class="instrucoes">
+    <h3>Como Jogar:</h3>
+    <p>&#127918; Setas ou WASD movem a cobra. <b>Espa&ccedil;o</b> pausa, <b>Enter</b> inicia. No celular, deslize no tabuleiro.</p>
+    <p>&#127822; Ma&ccedil;a = 10 pontos &times; n&iacute;vel. &#11088; Ma&ccedil;a dourada (some r&aacute;pido) = 50 &times; n&iacute;vel.</p>
+    <p>&#9889; A cada 5 ma&ccedil;as voc&ecirc; sobe de n&iacute;vel e o jogo acelera.</p>
+    <p>&#128165; N&atilde;o bata nas paredes (exceto no F&aacute;cil), nos obst&aacute;culos nem no pr&oacute;prio corpo.</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
