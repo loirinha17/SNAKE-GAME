@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corrida de Motos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="voltar" href="../../index.html">&larr; Menu de jogos</a>
+
+<div class="container">
+  <h1>&#127949; Corrida de Motos</h1>
+
+  <div class="info">
+    <div class="box">Pontos<b id="pontos">0</b></div>
+    <div class="box">Tempo<b id="tempo">45</b></div>
+    <div class="box">Km/h<b id="vel">0</b></div>
+    <div class="box">N&iacute;vel<b id="nivel">1</b></div>
+    <div class="box">Recorde<b id="recorde">0</b></div>
+  </div>
+
+  <canvas id="canvas" width="640" height="360"></canvas>
+
+  <div>
+    <button id="btnIniciar">Iniciar Corrida</button>
+    <button id="btnPausar">Pausar / Continuar</button>
+    <button id="btnSom">&#128266;</button>
+  </div>
+
+  <div class="touch">
+    <div class="grupo">
+      <button class="ctl" data-ctl="esq">&#9668;</button>
+      <button class="ctl" data-ctl="dir">&#9658;</button>
+    </div>
+    <div class="grupo">
+      <button class="ctl largo" data-ctl="freio">FREIO</button>
+      <button class="ctl largo verde" data-ctl="acel">ACELERAR</button>
+    </div>
+  </div>
+
+  <div class="instrucoes">
+    <h3>Como Jogar:</h3>
+    <p>&#9650; / W acelera, &#9660; / S freia, &#9664; &#9654; / A D inclinam a moto. <b>Espa&ccedil;o</b> ou <b>P</b> pausa, <b>Enter</b> inicia.</p>
+    <p>&#9201; Corra contra o rel&oacute;gio! Cada <b>checkpoint</b> d&aacute; +25 segundos e sobe o n&iacute;vel (mais motos e curvas mais fechadas).</p>
+    <p>&#127949; Ultrapasse os rivais para ganhar 100 &times; n&iacute;vel pontos, mas n&atilde;o bata neles. Sair da pista (fora das zebras) reduz a velocidade.</p>
+    <p>&#127745; Nas curvas a moto &eacute; empurrada para fora: tire o p&eacute; ou compense com a dire&ccedil;&atilde;o.</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
