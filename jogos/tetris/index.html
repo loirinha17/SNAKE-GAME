@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetris</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="voltar" href="../../index.html">&larr; Menu de jogos</a>
+
+<div class="container">
+  <h1>&#129521; Tetris</h1>
+
+  <div class="jogo">
+    <canvas id="tabuleiro" width="300" height="600"></canvas>
+
+    <div class="painel">
+      <div class="box">Pontos<b id="pontos">0</b></div>
+      <div class="box">N&iacute;vel<b id="nivel">1</b></div>
+      <div class="box">Linhas<b id="linhas">0</b></div>
+      <div class="box">Recorde<b id="recorde">0</b></div>
+      <div class="box">Pr&oacute;xima<canvas id="proxima" width="96" height="96"></canvas></div>
+    </div>
+  </div>
+
+  <div>
+    <button id="btnIniciar">Iniciar Jogo</button>
+    <button id="btnPausar">Pausar / Continuar</button>
+  </div>
+
+  <div class="teclas">
+    <button class="tecla" data-acao="esquerda">&#9668;</button>
+    <button class="tecla" data-acao="girar">&#10227;</button>
+    <button class="tecla" data-acao="direita">&#9658;</button>
+    <button class="tecla" data-acao="baixo">&#9660;</button>
+    <button class="tecla grande" data-acao="queda">&#10515; Queda</button>
+  </div>
+
+  <div class="instrucoes">
+    <h3>Como Jogar:</h3>
+    <p>&#9664; &#9654; movem, &#9650; gira, &#9660; desce mais r&aacute;pido, <b>Espa&ccedil;o</b> derruba a pe&ccedil;a, <b>P</b> pausa, <b>Enter</b> inicia.</p>
+    <p>Complete linhas inteiras para elimin&aacute;-las. 4 de uma vez (<b>Tetris</b>) vale 800 &times; n&iacute;vel!</p>
+    <p>A cada 10 linhas o n&iacute;vel sobe e as pe&ccedil;as caem mais r&aacute;pido. A pe&ccedil;a transparente mostra onde ela vai parar.</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
